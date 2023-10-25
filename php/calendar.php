@@ -39,7 +39,7 @@
             $specialCharsExploded = explode("-", $specialChars);
             $dateObj   = DateTime::createFromFormat('!m', $specialCharsExploded[1]);
             $monthName = $dateObj->format('F');
-            echo("<h2>".$monthName ." - ". $specialCharsExploded[0]."</h2><img src='/../phpStuff/phpCalendar/img/".$monthName.".png'>");
+            echo("<div id='dateDiver'><h2>".$monthName ." - ". $specialCharsExploded[0]."</h2><img src='/../phpStuff/phpCalendar/img/".$monthName.".png'></div>");
             $day = 01;
             $month = $specialCharsExploded[1];
             $date = date("Y-$month-$day");

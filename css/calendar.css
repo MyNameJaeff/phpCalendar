@@ -24,3 +24,11 @@ main{
 .table td{
     padding: 0.3rem;
 }
+#dateDiver{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#dateDiver>img{
+    width: 80px;
+}
