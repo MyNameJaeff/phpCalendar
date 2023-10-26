@@ -1,34 +1,39 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-body{
-    height: 100vh;
-    padding-top: 5vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 main{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: fit-content;
+}
+main>div{
+    margin-top: 1%;
+}
+img{
+    width: 100px;
 }
 .tableContainer{
-    width: 100%;
-    height: 100%;
-}
-.table td{
-    padding: 0.3rem;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 2%;
 }
 #dateDiver{
     display: flex;
-    align-items: center;
     justify-content: space-around;
+    align-items: center;
+    margin-bottom: 2%;
 }
-#dateDiver>img{
-    width: 80px;
+table{
+    border-collapse: collapse;
+}
+tr{
+    border: 1px solid black;
+    padding: 5%;
+    background-color: whitesmoke;
+}
+thead>tr{
+    background-color: lightblue;
+}
+td, th{
+    padding: 1%;
+}
+tr:hover{
+    background-color: rgba(0, 0, 0, 0.125);
 }

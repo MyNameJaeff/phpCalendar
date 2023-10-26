@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+main{
+    height: 86vh;
+    overflow: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
