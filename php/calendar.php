@@ -18,9 +18,9 @@
     <main>
         <div>
             <form method="post">
-                <input type="submit" name="prev" value="Previous" class="btn btn-outline-secondary">
-                <input type="submit" name="curr" value="Current" class="btn btn-outline-secondary">
-                <input type="submit" name="next" value="Next" class="btn btn-outline-secondary">
+                <input type="submit" name="prev" value="<" class="btn btn-outline-secondary">
+                <input type="submit" name="curr" value="Today" class="btn btn-outline-secondary">
+                <input type="submit" name="next" value=">" class="btn btn-outline-secondary">
             </form>
         </div>
 
@@ -41,11 +41,33 @@
                     $specialChars = htmlspecialchars($_GET["date"]);
                 } else {
                     $specialChars = date("Y-m-01");
-                    header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . $specialChars);
+                    //header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . $specialChars);
                 }
                 $specialCharsExploded = explode("-", $specialChars);
                 $dateObj = DateTime::createFromFormat('!m', $specialCharsExploded[1]);
                 $monthName = $dateObj->format('F');
+
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    if (isset($_POST['prev'])) {
+                        if (($specialCharsExploded[1] - 1) <= 0) {
+                            $specialCharsExploded[1] = 12;
+                            $specialCharsExploded[0] -= 1;
+                            header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1]) . '-01"');
+                        } else {
+                            header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1] - 1) . "-01");
+                        }
+                    } else if (isset($_POST['curr'])) {
+                        header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . (date("Y-m-01")));
+                    } else {
+                        if (($specialCharsExploded[1] + 1) >= 13) {
+                            $specialCharsExploded[1] = 1;
+                            $specialCharsExploded[0] += 1;
+                            header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1]) . "-01");
+                        } else {
+                            header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1] + 1) . "-01");
+                        }
+                    }
+                }
                 echo ("<div id='dateDiver'><h2>" . $monthName . " - " . $specialCharsExploded[0] . "</h2><img src='/../phpStuff/phpCalendar/img/" . $monthName . ".png'></div>");
                 $day = 01;
                 $month = $specialCharsExploded[1];
@@ -74,33 +96,12 @@
                     if ($day_name == "Sunday") {
                         echo "<tr><td>$dayofyear - " . $namnsdag . "</td><td style='color:red;'>" . $day . '</td></tr>';
                     } else if ($day_name == "Monday") {
-                        echo "<tr><td>$dayofyear - " . $namnsdag . "</td><td>" . $day . " v." . $week_nr . '</td></tr>';
+                        echo ("<tr><td>$dayofyear -  $namnsdag </td><td>$day v $week_nr</td></tr>"); //
                     } else {
                         echo "<tr><td>$dayofyear - " . $namnsdag . "</td><td>" . $day . '</td></tr>';
                     }
                 }
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    if (isset($_POST['prev'])) {
-                        if (($specialCharsExploded[1] - 1) <= 0) {
-                            $specialCharsExploded[1] = 12;
-                            $specialCharsExploded[0] -= 1;
-                            header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1]) . "-01");
-                        } else {
-                            header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1] - 1) . "-01");
-                        }
-                    } else if (isset($_POST['curr'])) {
-                        header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . (date("Y-m-01")));
-                    } else {
-                        echo ($specialCharsExploded[1]);
-                        if (($specialCharsExploded[1] + 1) >= 13) {
-                            $specialCharsExploded[1] = 1;
-                            $specialCharsExploded[0] += 1;
-                            header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1]) . "-01");
-                        } else {
-                            header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1] + 1) . "-01");
-                        }
-                    }
-                }
+
                 ?>
             </table>
         </div>
