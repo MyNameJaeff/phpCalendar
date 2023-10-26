@@ -12,11 +12,11 @@
         <?php
         $date = $_POST['date'];
         $day_name = date('w', strtotime($date));
+        $nextFriday = date("d", strtotime('next friday', strtotime($date)));
         if($day_name == 5){
             echo("<img src='../img/feel-that-thats-friday.gif'>");
         }else{
-            $nextMonday = date("d", strtotime('next friday', strtotime($date)));
-            echo($nextMonday-date("d", strtotime($date))." day(s)");
+            echo($nextFriday-date("d", strtotime($date))." day(s)");
         }
         ?>
     <?php else : ?>
