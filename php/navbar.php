@@ -7,13 +7,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="/../phpstuff/phpCalendar/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/../phpCalendar/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/../phpstuff/phpCalendar/php/calendar.php">Calendar</a>
+                <a class="nav-link" href="/../phpCalendar/php/calendar.php">Calendar</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/../phpstuff/phpCalendar/php/form.html">Form</a>
+                <a class="nav-link" href="/../phpCalendar/php/form.html">Form</a>
             </li>
         </ul>
     </div>

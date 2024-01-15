@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/./phpstuff/phpCalendar/css/base.css">
-    <link rel="stylesheet" href="/./phpstuff/phpCalendar/css/calendar.css">
+    <link rel="stylesheet" href="/./phpCalendar/css/base.css">
+    <link rel="stylesheet" href="/./phpCalendar/css/calendar.css">
     <title>Calendar PHP</title>
 </head>
 
@@ -41,7 +41,7 @@
                     $specialChars = htmlspecialchars($_GET["date"]);
                 } else {
                     $specialChars = date("Y-m-01");
-                    //header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . $specialChars);
+                    //header("Location: https://localhost/phpCalendar/php/calendar.php/?date=" . $specialChars);
                 }
                 $specialCharsExploded = explode("-", $specialChars);
                 $dateObj = DateTime::createFromFormat('!m', $specialCharsExploded[1]);
@@ -52,23 +52,23 @@
                         if (($specialCharsExploded[1] - 1) <= 0) {
                             $specialCharsExploded[1] = 12;
                             $specialCharsExploded[0] -= 1;
-                            header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1]) . '-01"');
+                            header("Location: https://localhost/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1]) . '-01"');
                         } else {
-                            header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1] - 1) . "-01");
+                            header("Location: https://localhost/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1] - 1) . "-01");
                         }
                     } else if (isset($_POST['curr'])) {
-                        header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . (date("Y-m-01")));
+                        header("Location: https://localhost/phpCalendar/php/calendar.php/?date=" . (date("Y-m-01")));
                     } else {
                         if (($specialCharsExploded[1] + 1) >= 13) {
                             $specialCharsExploded[1] = 1;
                             $specialCharsExploded[0] += 1;
-                            header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1]) . "-01");
+                            header("Location: https://localhost/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1]) . "-01");
                         } else {
-                            header("Location: https://localhost/phpstuff/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1] + 1) . "-01");
+                            header("Location: https://localhost/phpCalendar/php/calendar.php/?date=" . ($specialCharsExploded[0]) . "-" . ($specialCharsExploded[1] + 1) . "-01");
                         }
                     }
                 }
-                echo ("<div id='dateDiver'><h2>" . $monthName . " - " . $specialCharsExploded[0] . "</h2><img src='/../phpStuff/phpCalendar/img/" . $monthName . ".png'></div>");
+                echo ("<div id='dateDiver'><h2>" . $monthName . " - " . $specialCharsExploded[0] . "</h2><img src='/../phpCalendar/img/" . $monthName . ".png'></div>");
                 $day = 01;
                 $month = $specialCharsExploded[1];
                 $date = date("Y-$month-$day");
